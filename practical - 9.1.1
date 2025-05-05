@@ -1,0 +1,39 @@
+Write a C program to perform Depth First Search (DFS) traversal on a graph.
+
+#include<stdio.h>
+#include<stdlib.h>
+
+// Write your code here...
+#define MAX 100
+
+typedef struct node {
+	int vertex;
+	struct node* next;
+} *GNODE;
+
+GNODE graph[MAX];
+int visited[MAX];
+
+void DFS(int v) {
+	GNODE temp;
+	visited[v] = 1;
+	printf("\n%d", v);
+	for (temp = graph[v]; temp != NULL; temp = temp->next) {
+		if (!visited[temp->vertex]) {
+			DFS(temp->vertex);
+		}
+	}
+}
+
+
+
+
+
+
+
+void main() {
+    int n,E,i,s,d,v;
+    GNODE q,p;
+    printf("Enter no of vertices: ");
+	scanf("%d",&n);
+}
