@@ -1,0 +1,48 @@
+Write a C program to implement a menu-driven application that uses a doubly linked list to perform the following operations:
+
+
+
+Operations:
+
+Create and Insert: Add a number to the doubly linked list.
+Delete: Remove a specific number from the doubly linked list.
+Display: Print the elements of the doubly linked list in order.
+Reverse: Reverse the order of the doubly linked list.
+Exit: The program should terminate when the user chooses this option.
+
+#include <stdio.h>
+#include <stdlib.h>
+ struct Node{
+int data;
+struct Node *prev;
+struct Node *next;
+};
+struct Node *head = NULL;
+struct Node *tail = NULL;
+void insert (int value){
+	struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
+
+	newNode -> data = value;
+newNode -> next = NULL;
+	newNode -> prev = NULL;
+	if(head==NULL){
+		newNode->prev = NULL;
+		head = tail = newNode;
+	}
+	else{
+		struct Node* temp = head;
+		while(temp-> next !=NULL){
+			temp = temp->next;
+		}
+		temp->next = newNode;
+		newNode->prev = temp;
+tail = newNode;
+	}
+}
+void remov(int data){
+	struct Node* temp = head;
+	while(temp!= NULL && temp->data != data){
+		temp = temp->next;
+	}
+	if(temp==NULL){
+		printf("%d not found\n",data);
