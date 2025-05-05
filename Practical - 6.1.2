@@ -1,0 +1,42 @@
+Write a menu-driven C program that implements a doubly linked list for the following operations:
+
+Create two lists
+Display lists
+Concatenate
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+struct Node{
+int data;
+struct Node* prev;
+struct Node* next;
+};
+struct DoublyLinkedList{
+struct Node* head;
+struct Node* tail;
+};
+void append(struct DoublyLinkedList* list, int data){
+	struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+	newNode-> data = data;
+	newNode-> next = NULL;
+	newNode->prev = list->tail;
+ if(list->tail==NULL){		list->head = newNode;
+	}
+	else{
+		list->tail->next = newNode;
+	}
+	list->tail = newNode;
+}
+void displayList(struct DoublyLinkedList*list){
+	struct Node* temp = list->head;
+	if(temp==NULL){
+		printf("List is empty\n");
+		return;
+	}
+	while(temp!=NULL){
+	printf("%d <-> ",temp->data);
+	temp = temp->next;
+}
+printf("NULL\n");
+}
